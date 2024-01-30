@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 DATASETS_DIR = os.path.join(os.path.dirname(__file__), '..', 'datasets')
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), '..', 'outputs')
-PLOTS_DIR = os.path.join(OUTPUT_DIR, 'plots')
+PLOTS_DIR = os.path.join(os.path.dirname(__file__), '..', 'plots')
 
 dataset_name = 'Tabela_04_Pop_resid_por_cor_ou_raca_e_pessoas_indigenas_2022_MU.xlsx'
 DATASET_FILE = os.path.join(DATASETS_DIR, dataset_name)
@@ -44,7 +44,11 @@ codigo_to_uf = { "12": "AC", "27": "AL", "16": "AP", "13": "AM", "29": "BA", "23
                 "26": "PE", "22": "PI", "33": "RJ", "24": "RN", "43": "RS", "11": "RO", "14": "RR", "42": "SC",
                 "35": "SP", "28": "SE", "17": "TO"}
 
+codigo_to_regiao = {"1": "Norte", "2": "Nordeste", "3": "Sudeste", "4": "Sul", "5": "Centro-Oeste"}
+
 df["UF"] = (df["codigo"].apply(lambda x: str(x)[:2])).map(codigo_to_uf)
+
+df["regiao"] = df["codigo"].apply(lambda x: str(x)[0]).map(codigo_to_regiao)
 
 check_for_nan_values(df)
 

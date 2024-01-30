@@ -160,6 +160,10 @@ cython_debug/
 #.idea/
 
 # Dataset
-.csv
-.parquet
+*.csv
+*.parquet
+*.xlsx
 ```
+# Images
+*.png
+*.jpg
